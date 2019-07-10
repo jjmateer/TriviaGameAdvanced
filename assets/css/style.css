@@ -1,0 +1,46 @@
+.container {
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+    border:solid black;
+    height:800px;
+    
+}
+#containerTitle{
+    text-align: center;
+    font-size:75px;
+}
+#startButton {
+    width:50%;
+    height:75px;
+    border:solid black;
+    margin-left:25%;
+    margin-right:25%;
+    font-size:30px;
+}
+#startBtn{
+    height:65px;
+    width:50%;
+    border:solid black;
+    margin-left:25%;
+    margin-right:25%;
+    
+}
+#timeRemaining{
+    height:5%;
+    width:100%;
+    border:solid black;
+    margin-top:10px;
+}
+#triviaQuestion{
+    height: 7.5%;
+    width: 100%;
+    border:solid black;
+    margin-top:25px;
+}
+#userChoices{
+    height:30%;
+    width:100%;
+    border:solid black;
+    margin-top:25px;
+}
