@@ -13,7 +13,6 @@
 #startButton {
     width:50%;
     height:75px;
-    border:solid black;
     margin-left:25%;
     margin-right:25%;
     font-size:30px;
@@ -29,18 +28,24 @@
 #timeRemaining{
     height:5%;
     width:100%;
-    border:solid black;
+    font-size:35px;
     margin-top:10px;
 }
 #triviaQuestion{
     height: 7.5%;
     width: 100%;
-    border:solid black;
+    font-size:45px;
     margin-top:25px;
 }
 #userChoices{
     height:30%;
     width:100%;
-    border:solid black;
+    
     margin-top:25px;
+    font-size:35px;
+}
+
+#choice1, #choice2, #choice3, #choice4 {
+    width:100%;
+    height:50px;
 }
