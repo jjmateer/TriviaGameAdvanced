@@ -6,8 +6,17 @@ var unanswered = 0;
 
 //Create reset function
 function reset() {
-
+    $("#startButton").empty();
+    $("#timeRemaining").empty();
+    $("#triviaQuestion").empty();
+    $("#userChoices").empty();
 }
+
+//Create a timeout function
+function timeout() {
+}
+
+
 //make an onLoad function that dynamically creates a start button
 var startBtn = document.getElementById("startBtn");
 
@@ -19,15 +28,14 @@ var question4 = "What fast food chain sells animal fries?";
 var question5 = "What fast food chain sells kentucky fried chicken?";
 
 
-// { answer: "panda express", correct: false }];
+
 //Create variables for all of the choices with name properties and boolean values for the variables q1-5. 
-//Ex: q1= question1; If true, question will display correct, if not, it will display wrong.
-var mcdonalds = { Name: "Mcdonald's", q1: false, q2: true, q3: false, q4: false, q5: false };
-var carlsJr = { Name: "Carl's Jr.", q1: false, q2: false, q3: false, q4: false, q5: false };
-var burgerKing = { Name: "Burger King", q1: true, q2: false, q3: false, q4: false, q5: false };
-var tacoBell = { Name: "Taco Bell", q1: false, q2: false, q3: true, q4: false, q5: false };
-var inNOut = { Name: "In-n-out", q1: false, q2: false, q3: false, q4: true, q5: false };
-var kfc = { Name: "KFC", q1: false, q2: false, q3: false, q4: false, q5: true };
+var mcdonalds = { Name: "Mcdonald's" };
+var carlsJr = { Name: "Carl's Jr." };
+var burgerKing = { Name: "Burger King" };
+var tacoBell = { Name: "Taco Bell" };
+var inNOut = { Name: "In-n-out" };
+var kfc = { Name: "KFC" };
 //link questions
 var q1 = false || true;
 var q2 = false || true;
@@ -49,18 +57,33 @@ startBtn.addEventListener("click", function () {
 
 //Add on click function for start button
 $(startBtn).click(function () {
+    $("#startButton").empty()
     //Display the first question
     $("#triviaQuestion").text(question1);
+    //Put timer into a variable to use in clearinterval for on click functions
+    var countdownTimer;
+    //Determine if timer is running
+    var clockRunning = false;
     //start timer counting down from 30 seconds
     var i = 30;
-    $("#startButton").click(function (e) {
-        setInterval(function () {
-            $("#timeRemaining").html("Time remaining: " + i);
-            i--;
-        }, 1000);
-        $("#startButton").empty();
-    });
+    //When timer is less than or equal to -1, it will stop counting and call the reset function.
+    function startTimer() {
+        if (!clockRunning) {
+            clockRunning = true;
+            countdownTimer = setInterval(function () {
+                console.log(i);
+                $("#timeRemaining").html("Time remaining: " + i);
+                i = i - 1;
 
+                if (i <= -1) {
+                    clearInterval(countdownTimer);
+                    reset();
+                }
+            }, 1000);
+        }
+    }
+    //Call function to start timer
+    startTimer();
     //display question1 choices
     $("#choice1").text(mcdonalds.Name);
     $("#choice2").text(carlsJr.Name);
@@ -81,6 +104,11 @@ $(startBtn).click(function () {
         //Empty out the userChoices div
         $("#userChoices").empty();
         $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
+        //When clicked, call reset function in 3 seconds
+        setTimeout(reset, 3000);
+        //Stop timer from counting down.
+        clearInterval(countdownTimer);
+
 
 
     });
@@ -96,7 +124,8 @@ $(startBtn).click(function () {
         //Empty out the userChoices div
         $("#userChoices").empty();
         $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
-
+        setTimeout(reset, 3000);
+        clearInterval(countdownTimer);
 
     });
     $("#choice3").click(function () {
@@ -111,7 +140,8 @@ $(startBtn).click(function () {
         //Empty out the userChoices div
         $("#userChoices").empty();
         $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
-
+        setTimeout(reset, 3000);
+        clearInterval(countdownTimer);
 
     });
     $("#choice4").click(function () {
@@ -125,47 +155,12 @@ $(startBtn).click(function () {
         //Empty out the userChoices div
         $("#userChoices").empty();
         $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
-
+        setTimeout(reset, 3000);
+        clearInterval(countdownTimer);
 
     });
 
 });
-
-
-
-
-
-
-//-------------------------------------------------------------------------------------------------------
-
-
-
-
-// When user choice is clicked, 
-
-
-
- //if guessed correctly
-
- //stop timer and display how much time is left
-
-    //tell the user they are correct
-
-    //display the gif of the correct answer
-
-//if guessed incorrectly
-
-//stop timer and display how much time is left
-
-    //tell the user they are incorrect
-
-    //display the correct answer with gif underneath
-
-
-
-
-        //Display the next question
-        // $("#triviaQuestion").text(question2);
 
 
 
