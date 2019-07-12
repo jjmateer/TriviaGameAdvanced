@@ -16,7 +16,6 @@ function reset() {
 function timeout() {
 }
 
-
 //make an onLoad function that dynamically creates a start button
 var startBtn = document.getElementById("startBtn");
 
@@ -27,8 +26,6 @@ var question3 = "What fast food chain sells the triple layer nacho?";
 var question4 = "What fast food chain sells animal fries?";
 var question5 = "What fast food chain sells kentucky fried chicken?";
 
-
-
 //Create variables for all of the choices with name properties and boolean values for the variables q1-5. 
 var mcdonalds = { Name: "Mcdonald's" };
 var carlsJr = { Name: "Carl's Jr." };
@@ -36,6 +33,7 @@ var burgerKing = { Name: "Burger King" };
 var tacoBell = { Name: "Taco Bell" };
 var inNOut = { Name: "In-n-out" };
 var kfc = { Name: "KFC" };
+
 //link questions
 var q1 = false || true;
 var q2 = false || true;
@@ -43,13 +41,11 @@ var q3 = false || true;
 var q4 = false || true;
 var q5 = false || true;
 
-
 // Question 1 choices = mcdonalds, carlsJr, burgerKing, tacoBell
 // Question 2 choices = mcdonalds, tacoBell, burgerKing, carlsJr
 // Question 3 choices = burgerKing, carlsJr, mcdonalds, tacoBell
 // Question 4 choices = inNOut, burgerKing, carlsJr, tacoBell
 // Question 5 choices = carlsJr, mcdonalds, kfc, tacoBell
-
 
 //Add an event listener to the start button
 startBtn.addEventListener("click", function () {
@@ -91,7 +87,7 @@ $(startBtn).click(function () {
     $("#choice4").text(tacoBell.Name);
 
     //if else statements to alert correct or incorrect
-    $("#choice1").click(function () {
+    $("#choice1, #choice2, #choice4").click(function () {
         //sets value of q1 to determine if the answer is right or wrong
         //If q1 is true alert "correct!!", if false alert "incorrect!!"
         q1 = false;
@@ -112,22 +108,7 @@ $(startBtn).click(function () {
 
 
     });
-    $("#choice2").click(function () {
-        q1 = false;
 
-        if (q1 === true) {
-            $("#startButton").text("Right!!");
-        } else if (q1 === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer was Burger King!");
-        }
-        //Empty out the userChoices div
-        $("#userChoices").empty();
-        $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
-        setTimeout(reset, 3000);
-        clearInterval(countdownTimer);
-
-    });
     $("#choice3").click(function () {
         q1 = true;
         if (q1 === true) {
@@ -144,21 +125,7 @@ $(startBtn).click(function () {
         clearInterval(countdownTimer);
 
     });
-    $("#choice4").click(function () {
-        q1 = false;
-        if (q1 === true) {
-            $("#startButton").text("Right!!");
-        } else if (q1 === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer was Burger King!");
-        }
-        //Empty out the userChoices div
-        $("#userChoices").empty();
-        $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
-        setTimeout(reset, 3000);
-        clearInterval(countdownTimer);
 
-    });
 
 });
 
