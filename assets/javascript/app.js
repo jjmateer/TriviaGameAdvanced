@@ -25,12 +25,12 @@ var question5 = "What fast food chain sells kentucky fried chicken?";
 
 // { answer: "panda express", correct: false }];
 //Create variables for each choice and make them true or false for specific questions
-var mcdonalds = {Name:"Mcdonald's", q1:false, q2:true, q3:false, q4:false, q5:false};
-var carlsJr = {Name:"Carl's Jr.", q1:false, q2:false, q3:false, q4:false, q5:false};
-var burgerKing = {Name:"Burger King", q1:true, q2:false, q3:false, q4:false, q5:false};
-var tacoBell = {Name:"Taco Bell", q1:false, q2:false, q3:true, q4:false, q5:false};
-var inNOut= {Name:"In-n-out", q1:false, q2:false, q3:false, q4:true, q5:false};
-var kfc = {Name:"KFC", q1:false, q2:false, q3:false, q4:false, q5:true};
+var mcdonalds = { Name: "Mcdonald's", q1: false, q2: true, q3: false, q4: false, q5: false };
+var carlsJr = { Name: "Carl's Jr.", q1: false, q2: false, q3: false, q4: false, q5: false };
+var burgerKing = { Name: "Burger King", q1: true, q2: false, q3: false, q4: false, q5: false };
+var tacoBell = { Name: "Taco Bell", q1: false, q2: false, q3: true, q4: false, q5: false };
+var inNOut = { Name: "In-n-out", q1: false, q2: false, q3: false, q4: true, q5: false };
+var kfc = { Name: "KFC", q1: false, q2: false, q3: false, q4: false, q5: true };
 //link questions
 var q1 = false || true;
 var q2 = false || true;
@@ -38,21 +38,22 @@ var q3 = false || true;
 var q4 = false || true;
 var q5 = false || true;
 
-//Make arrays for each question containing their choices
-// var question1Choices = [mcdonalds, carlsJr, burgerKing, tacoBell];
-// var question2Choices = [mcdonalds, tacoBell, burgerKing, carlsJr];
-// var question3Choices = [burgerKing, carlsJr, mcdonalds, tacoBell];
-// var question4Choices = [inNOut, burgerKing, carlsJr, tacoBell];
-// var question5Choices = [carlsJr, mcdonalds, kfc, tacoBell];
+
+// Question 1 choices = mcdonalds, carlsJr, burgerKing, tacoBell
+// Question 2 choices = mcdonalds, tacoBell, burgerKing, carlsJr
+// Question 3 choices = burgerKing, carlsJr, mcdonalds, tacoBell
+// Question 4 choices = inNOut, burgerKing, carlsJr, tacoBell
+// Question 5 choices = carlsJr, mcdonalds, kfc, tacoBell
 
 
-//Create on click function for the button to start the game
+//Add an event listener to the start button
 startBtn.addEventListener("click", function () {
 });
 
-//display the first question to triviaQuestion div
+//Add on click function for start button
 $(startBtn).click(function () {
-    $("#triviaQuestion").html(question1);
+    //Display the first question
+    $("#triviaQuestion").text(question1);
     //start timer counting down from 30 seconds
     var i = 30;
     $("#startButton").click(function (e) {
@@ -72,41 +73,56 @@ $(startBtn).click(function () {
     //if else statements to alert correct or incorrect
     $("#choice1").click(function () {
         //sets value of q1 to determine if the answer is right or wrong
-        q1 = false;
         //If q1 is true alert "correct!!", if false alert "incorrect!!"
-        if(q1 === true) {
+        q1 = false;
+        if (q1 === true) {
             alert("correct!!")
-        } else if(q1 === false) {
+        } else if (q1 === false) {
             alert("incorrect!!")
         }
+        //Empty out the userChoices div
+        $("#userChoices").empty();
+
     });
     $("#choice2").click(function () {
         q1 = false;
 
-        if(q1 === true) {
+        if (q1 === true) {
             alert("correct!!")
-        } else if(q1 === false) {
+        } else if (q1 === false) {
             alert("incorrect!!")
         }
+        $("#userChoices").empty();
     });
     $("#choice3").click(function () {
         q1 = true;
-        if(q1 === true) {
+        if (q1 === true) {
             alert("correct!!")
-        } else if(q1 === false) {
+        } else if (q1 === false) {
             alert("incorrect!!")
         }
+        $("#userChoices").empty();
     });
     $("#choice4").click(function () {
         q1 = false;
-        if(q1 === true) {
+        if (q1 === true) {
             alert("correct!!")
-        } else if(q1 === false) {
+        } else if (q1 === false) {
             alert("incorrect!!")
         }
+        $("#userChoices").empty();
     });
 
 });
+
+
+
+
+
+
+//-------------------------------------------------------------------------------------------------------
+
+
 
 
 // When user choice is clicked, 
@@ -132,7 +148,8 @@ $(startBtn).click(function () {
 
 
 
-
+        //Display the next question
+        // $("#triviaQuestion").text(question2);
 
 
 
