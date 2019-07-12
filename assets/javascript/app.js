@@ -1,12 +1,8 @@
 //Create Variables
 var timeRemaining = 30;
-var currentQuestion;
-var userChoices;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unanswered = 0;
-var correct = true;
-var incorrect = false;
 
 //Create reset function
 function reset() {
@@ -24,7 +20,8 @@ var question5 = "What fast food chain sells kentucky fried chicken?";
 
 
 // { answer: "panda express", correct: false }];
-//Create variables for each choice and make them true or false for specific questions
+//Create variables for all of the choices with name properties and boolean values for the variables q1-5. 
+//Ex: q1= question1; If true, question will display correct, if not, it will display wrong.
 var mcdonalds = { Name: "Mcdonald's", q1: false, q2: true, q3: false, q4: false, q5: false };
 var carlsJr = { Name: "Carl's Jr.", q1: false, q2: false, q3: false, q4: false, q5: false };
 var burgerKing = { Name: "Burger King", q1: true, q2: false, q3: false, q4: false, q5: false };
@@ -76,41 +73,60 @@ $(startBtn).click(function () {
         //If q1 is true alert "correct!!", if false alert "incorrect!!"
         q1 = false;
         if (q1 === true) {
-            alert("correct!!")
+            $("#startButton").text("Right!!");
         } else if (q1 === false) {
-            alert("incorrect!!")
+            $("#startButton").text("Wrong!!");
+            $("#triviaQuestion").text("The correct answer was Burger King!");
         }
         //Empty out the userChoices div
         $("#userChoices").empty();
+        $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
+
 
     });
     $("#choice2").click(function () {
         q1 = false;
 
         if (q1 === true) {
-            alert("correct!!")
+            $("#startButton").text("Right!!");
         } else if (q1 === false) {
-            alert("incorrect!!")
+            $("#startButton").text("Wrong!!");
+            $("#triviaQuestion").text("The correct answer was Burger King!");
         }
+        //Empty out the userChoices div
         $("#userChoices").empty();
+        $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
+
+
     });
     $("#choice3").click(function () {
         q1 = true;
         if (q1 === true) {
-            alert("correct!!")
+            $("#startButton").text("Right!!");
+            $("#triviaQuestion").text("The Whopper is sold by Burger King.")
         } else if (q1 === false) {
-            alert("incorrect!!")
+            $("#startButton").text("Wrong!!");
+            $("#triviaQuestion").text("The correct answer was Burger King!");
         }
+        //Empty out the userChoices div
         $("#userChoices").empty();
+        $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
+
+
     });
     $("#choice4").click(function () {
         q1 = false;
         if (q1 === true) {
-            alert("correct!!")
+            $("#startButton").text("Right!!");
         } else if (q1 === false) {
-            alert("incorrect!!")
+            $("#startButton").text("Wrong!!");
+            $("#triviaQuestion").text("The correct answer was Burger King!");
         }
+        //Empty out the userChoices div
         $("#userChoices").empty();
+        $('#userChoices').prepend('<img src="assets/images/burgerkinggif.webp" />');
+
+
     });
 
 });
