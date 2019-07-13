@@ -273,7 +273,7 @@ function questionThree() {
     //display question3 choices
 
     $("#choice1").text(burgerKing.Name);
-    $("#choice3").text(carlsJr.Name);
+    $("#choice2").text(carlsJr.Name);
     $("#choice3").text(mcdonalds.Name);
     $("#choice4").text(tacoBell.Name);
     //if else statements to alert correct or incorrect
@@ -328,11 +328,11 @@ function questionFour() {
     //display question4 choices
 
     $("#choice1").text(inNOut.Name);
-    $("#choice3").text(burgerKing.Name);
+    $("#choice2").text(burgerKing.Name);
     $("#choice3").text(carlsJr.Name);
     $("#choice4").text(tacoBell.Name);
     //if else statements to alert correct or incorrect
-    $("#choice1, #choice3, #choice4").click(function () {
+    $("#choice2, #choice3, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
         rightWrong = false;
@@ -353,7 +353,7 @@ function questionFour() {
         clearInterval(countdownTimer4);
     });
 
-    $("#choice3").click(function () {
+    $("#choice1").click(function () {
         rightWrong = true;
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
@@ -382,9 +382,9 @@ function questionFive() {
     startTimer5();
     //display question5 choices
 
-    $("#choice1").text(inNOut.Name);
-    $("#choice3").text(burgerKing.Name);
-    $("#choice3").text(carlsJr.Name);
+    $("#choice1").text(carlsJr.Name);
+    $("#choice2").text(burgerKing.Name);
+    $("#choice3").text(kfc.Name);
     $("#choice4").text(tacoBell.Name);
     //if else statements to alert correct or incorrect
     $("#choice1, #choice3, #choice4").click(function () {
@@ -405,7 +405,7 @@ function questionFive() {
         setTimeout(clearScreen, 3000);
 
         //Stop timer from counting down.
-        clearInterval(countdownTimer4);
+        clearInterval(countdownTimer5);
     });
 
     $("#choice3").click(function () {
@@ -422,7 +422,7 @@ function questionFive() {
         $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
         emptyChoices();
         setTimeout(clearScreen, 3000);
-        clearInterval(countdownTimer4);
+        clearInterval(countdownTimer5);
 
     });
 }
