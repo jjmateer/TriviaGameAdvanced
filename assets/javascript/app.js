@@ -19,7 +19,13 @@ var kfc = { Name: "KFC" };
 
 
 var rightWrong = false || true;
-
+function makeResetButton() {
+$('<button/>', {
+    text: "Reset", 
+    id: 'resetBtn',
+    click: function () { reset();; }
+});
+}
 //Create reset function
 function reset() {
     $("#startButton").html(startBtn);
@@ -67,78 +73,87 @@ function startTimer() {
             if (i <= -1) {
                 clearInterval(countdownTimer);
                 questionTwo();
+                unanswered++;
+                i = 30;
             }
         }, 1000);
     }
 }
-var i2 = 30
+
 clockRunning2 = false
 function startTimer2() {
 
     if (!clockRunning2) {
         clockRunning2 = true;
         countdownTimer2 = setInterval(function () {
-            console.log(i2);
-            $("#timeRemaining").html("Time remaining: " + i2);
-            i2 = i2 - 1;
+            console.log(i);
+            $("#timeRemaining").html("Time remaining: " + i);
+            i = i - 1;
 
-            if (i2 <= -1) {
+            if (i <= -1) {
                 clearInterval(countdownTimer2);
-                clearScreen();
+                questionThree();
+                i = 30;
+                unanswered++;
             }
         }, 1000);
     }
 }
-var i3 = 30
+
 clockRunning3 = false
 function startTimer3() {
 
     if (!clockRunning3) {
         clockRunning3 = true;
         countdownTimer3 = setInterval(function () {
-            console.log(i3);
-            $("#timeRemaining").html("Time remaining: " + i3);
-            i3 = i3 - 1;
+            console.log(i);
+            $("#timeRemaining").html("Time remaining: " + i);
+            i = i - 1;
 
-            if (i3 <= -1) {
+            if (i <= -1) {
                 clearInterval(countdownTimer3);
-                clearScreen();
+                questionFour();
+                i = 30;
+                unanswered++;
             }
         }, 1000);
     }
 }
-var i4 = 30
+
 clockRunning4 = false
 function startTimer4() {
 
     if (!clockRunning4) {
         clockRunning4 = true;
         countdownTimer4 = setInterval(function () {
-            console.log(i4);
-            $("#timeRemaining").html("Time remaining: " + i4);
-            i4 = i4 - 1;
+            console.log(i);
+            $("#timeRemaining").html("Time remaining: " + i);
+            i = i - 1;
 
-            if (i4 <= -1) {
+            if (i <= -1) {
                 clearInterval(countdownTimer2);
-                clearScreen();
+                questionFive();
+                i = 30;
+                unanswered++;
             }
         }, 1000);
     }
 }
-var i5 = 30
+
 clockRunning5 = false
 function startTimer5() {
 
     if (!clockRunning5) {
         clockRunning5 = true;
         countdownTimer5 = setInterval(function () {
-            console.log(i5);
-            $("#timeRemaining").html("Time remaining: " + i5);
-            i5 = i5 - 1;
+            console.log(i);
+            $("#timeRemaining").html("Time remaining: " + i);
+            i = i - 1;
 
-            if (i5 <= -1) {
+            if (i <= -1) {
                 clearInterval(countdownTimer2);
-                clearScreen();
+                endGameScreen();
+                i = 30;
             }
         }, 1000);
     }
@@ -157,6 +172,7 @@ startBtn.addEventListener("click", function () {
 
 //Add on click function for start button
 $(startBtn).click(function () {
+
     $("#startButton").empty()
     //Display the first question
     $("#triviaQuestion").text(question1);
@@ -164,10 +180,10 @@ $(startBtn).click(function () {
     //Call function to start timer
     startTimer();
     //display question1 choices
-    $("#choice1").text(mcdonalds.Name);
-    $("#choice2").text(carlsJr.Name);
-    $("#choice3").text(burgerKing.Name);
-    $("#choice4").text(tacoBell.Name);
+    $("#choice1").text("mcdonalds.Name");
+    $("#choice2").text("carlsJr.Name");
+    $("#choice3").text("burgerKing.Name");
+    $("#choice4").text("tacoBell.Name");
 
     //if else statements to alert correct or incorrect
     $("#choice1, #choice2, #choice4").click(function () {
@@ -188,6 +204,7 @@ $(startBtn).click(function () {
         setTimeout(questionTwo, 3000)
         //Stop timer from counting down.
         clearInterval(countdownTimer);
+        incorrectAnswers++;
     });
 
     $("#choice3").click(function () {
@@ -206,10 +223,11 @@ $(startBtn).click(function () {
         //Go to question two in 3 seconds.
         setTimeout(questionTwo, 3000);
         clearInterval(countdownTimer);
+        correctAnswers++;
     });
 });
 function questionTwo() {
-    $("#timeRemaining").html(countdownTimer2)
+    i = 30;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -217,10 +235,10 @@ function questionTwo() {
     startTimer2();
     //display question2 choices
 
-    $("#choice1").text(mcdonalds.Name);
-    $("#choice2").text(tacoBell.Name);
-    $("#choice3").text(burgerKing.Name);
-    $("#choice4").text(carlsJr.Name);
+    $("#choice1").text("mcdonalds.Name");
+    $("#choice2").text("tacoBell.Name");
+    $("#choice3").text("burgerKing.Name");
+    $("#choice4").text("carlsJr.Name");
     //if else statements to alert correct or incorrect
     $("#choice2, #choice3, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
@@ -242,6 +260,7 @@ function questionTwo() {
 
         //Stop timer from counting down.
         clearInterval(countdownTimer2);
+        incorrectAnswers++;
     });
 
     $("#choice1").click(function () {
@@ -259,12 +278,12 @@ function questionTwo() {
         emptyChoices();
         clearInterval(countdownTimer2);
         setTimeout(questionThree, 3000);
-
+        correctAnswers++;
     });
 
 }
 function questionThree() {
-    
+    i = 30;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -272,10 +291,10 @@ function questionThree() {
     startTimer3();
     //display question3 choices
 
-    $("#choice1").text(burgerKing.Name);
-    $("#choice2").text(carlsJr.Name);
-    $("#choice3").text(mcdonalds.Name);
-    $("#choice4").text(tacoBell.Name);
+    $("#choice1").text("burgerKing.Name");
+    $("#choice2").text("carlsJr.Name");
+    $("#choice3").text("mcdonalds.Name");
+    $("#choice4").text("tacoBell.Name");
     //if else statements to alert correct or incorrect
     $("#choice1, #choice2, #choice3").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
@@ -297,9 +316,11 @@ function questionThree() {
 
         //Stop timer from counting down.
         clearInterval(countdownTimer3);
+        incorrectAnswers++;
     });
 
     $("#choice4").click(function () {
+        i = 30;
         rightWrong = true;
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
@@ -314,12 +335,12 @@ function questionThree() {
         emptyChoices();
         setTimeout(questionFour, 3000);
         clearInterval(countdownTimer3);
-
+        correctAnswers++;
     });
 
 }
 function questionFour() {
-    
+    i = 30;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -327,10 +348,10 @@ function questionFour() {
     startTimer4();
     //display question4 choices
 
-    $("#choice1").text(inNOut.Name);
-    $("#choice2").text(burgerKing.Name);
-    $("#choice3").text(carlsJr.Name);
-    $("#choice4").text(tacoBell.Name);
+    $("#choice1").text("inNOut.Name");
+    $("#choice2").text("burgerKing.Name");
+    $("#choice3").text("carlsJr.Name");
+    $("#choice4").text("tacoBell.Name");
     //if else statements to alert correct or incorrect
     $("#choice2, #choice3, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
@@ -348,9 +369,9 @@ function questionFour() {
         emptyChoices();
         //When clicked, call clearScreen function in 3 seconds
         setTimeout(questionFive, 3000);
-
         //Stop timer from counting down.
         clearInterval(countdownTimer4);
+        incorrectAnswers++;
     });
 
     $("#choice1").click(function () {
@@ -368,13 +389,13 @@ function questionFour() {
         emptyChoices();
         setTimeout(questionFive, 3000);
         clearInterval(countdownTimer4);
-
+        correctAnswers++;
     });
 
 }
 
 function questionFive() {
-    
+    i = 30;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -382,10 +403,10 @@ function questionFive() {
     startTimer5();
     //display question5 choices
 
-    $("#choice1").text(carlsJr.Name);
-    $("#choice2").text(burgerKing.Name);
-    $("#choice3").text(kfc.Name);
-    $("#choice4").text(tacoBell.Name);
+    $("#choice1").text("carlsJr.Name");
+    $("#choice2").text("burgerKing.Name");
+    $("#choice3").text("kfc.Name");
+    $("#choice4").text("tacoBell.Name");
     //if else statements to alert correct or incorrect
     $("#choice1, #choice3, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
@@ -402,10 +423,10 @@ function questionFive() {
         $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
         emptyChoices();
         //When clicked, call clearScreen function in 3 seconds
-        setTimeout(clearScreen, 3000);
-
+        setTimeout(endGameScreen, 3000);
         //Stop timer from counting down.
         clearInterval(countdownTimer5);
+        incorrectAnswers++;
     });
 
     $("#choice3").click(function () {
@@ -421,12 +442,22 @@ function questionFive() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
         emptyChoices();
-        setTimeout(clearScreen, 3000);
+        setTimeout(endGameScreen, 3000);
         clearInterval(countdownTimer5);
-
+        correctAnswers++;
+        makeResetButton();
+        
     });
 }
-
+function endGameScreen() {
+    $("#gifDiv").empty();
+    $("#startButton").empty();
+    $("#triviaQuestion").empty();
+    $("#choice1").html("Correct answers: " + correctAnswers);
+    $("#choice2").html("Incorrect answers " + incorrectAnswers);
+    $("#choice3").html("Unanswered: " + unanswered);
+    $("choice4").html(resetBtn)
+}
 
 
 
