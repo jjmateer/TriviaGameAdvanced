@@ -1,5 +1,5 @@
+
 //Create Variables
-var timeRemaining = 30;
 var correctAnswers = 0;
 var incorrectAnswers = 0;
 var unanswered = 0;
@@ -13,6 +13,10 @@ var question5 = "What fast food chain sells kentucky fried chicken?";
 
 var rightWrong = false || true;
 
+function emptyResetDiv() {
+    $("#resetBtn").hide();
+}
+emptyResetDiv();
 
 //Create reset function
 function reset() {
@@ -36,14 +40,77 @@ function emptyChoices() {
     $("#choice3").empty();
     $("#choice4").empty();
 }
-$(startBtn).click(function () {
-    reset();
-    var rightWrong = false || true;
-
-});
 
 //Create a timeout function
-function timeout() {
+function timeout1() {
+
+       $("#startButton").text("Time out!!");
+       $("#triviaQuestion").text("The correct answer was Burger King!");
+  
+   //Empty out the gifDiv div
+   $("#gifDiv").empty();
+   $('#gifDiv').html('<img src="assets/images/burgerkinggif.webp" />');
+   emptyChoices();
+   //When clicked, call clearScreen function in 3 seconds
+   setTimeout(questionTwo, 3000)
+   //Stop timer from counting down.
+   unanswered++;
+}
+function timeout2() {
+
+    $("#startButton").text("Time out!!");
+    $("#triviaQuestion").text("The correct answer was Mcdonald's!");
+
+//Empty out the gifDiv div
+$("#gifDiv").empty();
+$('#gifDiv').html('<img src="assets/images/mcdonaldsgif.webp" />');
+emptyChoices();
+//When clicked, call clearScreen function in 3 seconds
+setTimeout(questionThree, 3000)
+//Stop timer from counting down.
+unanswered++;
+}
+function timeout3() {
+
+    $("#startButton").text("Time out!!");
+    $("#triviaQuestion").text("The correct answer was Taco Bell!");
+
+//Empty out the gifDiv div
+$("#gifDiv").empty();
+$('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />');
+emptyChoices();
+//When clicked, call clearScreen function in 3 seconds
+setTimeout(questionFour, 3000)
+//Stop timer from counting down.
+unanswered++;
+}
+function timeout4() {
+
+    $("#startButton").text("Time out!!");
+    $("#triviaQuestion").text("The correct answer was In-N-Out!");
+
+//Empty out the gifDiv div
+$("#gifDiv").empty();
+$('#gifDiv').html('<img src="assets/images/inNOutgif.webp" />');
+emptyChoices();
+//When clicked, call clearScreen function in 3 seconds
+setTimeout(questionFive, 3000)
+//Stop timer from counting down.
+unanswered++;
+}
+function timeout5() {
+
+    $("#startButton").text("Time out!!");
+    $("#triviaQuestion").text("The correct answer was KFC!");
+
+//Empty out the gifDiv div
+$("#gifDiv").empty();
+$('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
+emptyChoices();
+//When clicked, call clearScreen function in 3 seconds
+setTimeout(endGameScreen, 3000)
+//Stop timer from counting down.
+unanswered++;
 }
 
 
@@ -59,7 +126,7 @@ var countdownTimer5;
 //Determine if timer is running
 var clockRunning = false;
 //start timer counting down from 30 seconds
-var i = 30;
+var i = 5;
 //When timer is less than or equal to -1, it will stop counting and call the clearScreen function.
 function startTimer() {
     if (!clockRunning) {
@@ -71,9 +138,9 @@ function startTimer() {
 
             if (i <= -1) {
                 clearInterval(countdownTimer);
-                questionTwo();
+                timeout1();
                 unanswered++;
-                i = 30;
+                i = 5;
             }
         }, 1000);
     }
@@ -92,7 +159,8 @@ function startTimer2() {
             if (i <= -1) {
                 clearInterval(countdownTimer2);
                 questionThree();
-                i = 30;
+                timeout2();
+                i = 5;
                 unanswered++;
             }
         }, 1000);
@@ -112,7 +180,8 @@ function startTimer3() {
             if (i <= -1) {
                 clearInterval(countdownTimer3);
                 questionFour();
-                i = 30;
+                timeout3();
+                i = 5;
                 unanswered++;
             }
         }, 1000);
@@ -132,7 +201,8 @@ function startTimer4() {
             if (i <= -1) {
                 clearInterval(countdownTimer4);
                 questionFive();
-                i = 30;
+                timeout4()
+                i = 5;
                 unanswered++;
             }
         }, 1000);
@@ -152,7 +222,8 @@ function startTimer5() {
             if (i <= -1) {
                 clearInterval(countdownTimer5);
                 endGameScreen();
-                i = 30;
+                timeout5();
+                i = 5;
             }
         }, 1000);
     }
@@ -221,7 +292,7 @@ $(startBtn).click(function () {
     });
 });
 function questionTwo() {
-    i = 30;
+    i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -272,7 +343,7 @@ function questionTwo() {
 
 }
 function questionThree() {
-    i = 30;
+    i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -306,7 +377,7 @@ function questionThree() {
     });
 
     $("#choice4").click(function () {
-        i = 30;
+        i = 5;
         rightWrong = true;
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
@@ -323,7 +394,7 @@ function questionThree() {
 
 }
 function questionFour() {
-    i = 30;
+    i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -372,7 +443,7 @@ function questionFour() {
 }
 
 function questionFive() {
-    i = 30;
+    i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
     //Display the second question
@@ -428,7 +499,14 @@ function endGameScreen() {
     $("#choice1").html("Correct answers: " + correctAnswers);
     $("#choice2").html("Incorrect answers " + incorrectAnswers);
     $("#choice3").html("Unanswered: " + unanswered);
-    $("#choice4").html(resetBtn)
+    $("#choice4").empty();
+    $("#resetBtn").show();
+    $("#resetBtn").click(function () {
+        clearScreen();
+        reset();
+        var rightWrong = false || true;
+    
+    });
 }
 
 
