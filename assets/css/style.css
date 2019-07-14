@@ -25,6 +25,21 @@
     margin-right:25%;
     
 }
+#resetButton {
+    width:50%;
+    height:75px;
+    margin-left:25%;
+    margin-right:25%;
+    font-size:50px;
+}
+#resetBtn{
+    height:65px;
+    width:50%;
+    border:solid black;
+    margin-left:25%;
+    margin-right:25%;
+    
+}
 #timeRemaining{
     height:5%;
     width:100%;
