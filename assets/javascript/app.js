@@ -189,9 +189,7 @@ $(startBtn).click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
         rightWrong = false;
-        if (rightWrong === true) {
-            $("#startButton").text("Right!!");
-        } else if (rightWrong === false) {
+         if (rightWrong === false) {
             $("#startButton").text("Wrong!!");
             $("#triviaQuestion").text("The correct answer was Burger King!");
         }
@@ -211,10 +209,7 @@ $(startBtn).click(function () {
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
             $("#triviaQuestion").text("The Whopper is sold by Burger King.")
-        } else if (rightWrong === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer was Burger King!");
-        }
+        } 
         //Empty out the gifDiv div
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/burgerkinggif.webp" />');
@@ -243,10 +238,7 @@ function questionTwo() {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
         rightWrong = false;
-        if (rightWrong === true) {
-            $("#startButton").text("Right!!");
-            $("#triviaQuestion").text("The Big mac is sold by mcdonalds.")
-        } else if (rightWrong === false) {
+         if (rightWrong === false) {
             $("#startButton").text("Wrong!!");
             $("#triviaQuestion").text("The correct answer was mcdonalds!");
         }
@@ -267,10 +259,8 @@ function questionTwo() {
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
             $("#triviaQuestion").text("The Big mac is sold by mcdonalds.")
-        } else if (rightWrong === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer was mcdonalds!");
-        }
+        } 
+        
         //Empty out the gifDiv div
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/mcdonaldsgif.webp" />');
@@ -299,10 +289,7 @@ function questionThree() {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
         rightWrong = false;
-        if (rightWrong === true) {
-            $("#startButton").text("Right!!");
-            $("#triviaQuestion").text("The Triple layer nacho is sold by Taco bell.")
-        } else if (rightWrong === false) {
+         if (rightWrong === false) {
             $("#startButton").text("Wrong!!");
             $("#triviaQuestion").text("The correct answer was Taco Bell!");
         }
@@ -324,9 +311,6 @@ function questionThree() {
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
             $("#triviaQuestion").text("The Triple layer nacho is sold by Taco bell.")
-        } else if (rightWrong === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer was Taco Bell!");
         }
         //Empty out the gifDiv div
         $("#gifDiv").empty();
@@ -355,10 +339,7 @@ function questionFour() {
     $("#choice2, #choice3, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
-        rightWrong = false;
-        if (rightWrong === true) {
-            $("#triviaQuestion").text("T")
-        } else if (rightWrong === false) {
+         if (rightWrong === false) {
             $("#startButton").text("Wrong!!");
             $("#triviaQuestion").text("The correct answer was In-N-Out!");
         }
@@ -378,10 +359,7 @@ function questionFour() {
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
             $("#triviaQuestion").text("Animal fries are sold by In-N-Out")
-        } else if (rightWrong === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer was In-N-Out!");
-        }
+        } 
         //Empty out the gifDiv div
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/inNoutgif.webp" />');
@@ -411,9 +389,7 @@ function questionFive() {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
         rightWrong = false;
-        if (rightWrong === true) {
-            $("#triviaQuestion").text("T")
-        } else if (rightWrong === false) {
+        if (rightWrong === false) {
             $("#startButton").text("Wrong!!");
             $("#triviaQuestion").text("The correct answer was KFC.");
         }
@@ -433,10 +409,7 @@ function questionFive() {
         if (rightWrong === true) {
             $("#startButton").text("Right!!");
             $("#triviaQuestion").text("Kentucky fried chicken is sold at KFC.")
-        } else if (rightWrong === false) {
-            $("#startButton").text("Wrong!!");
-            $("#triviaQuestion").text("The correct answer is KFC.");
-        }
+        } 
         //Empty out the gifDiv div
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
