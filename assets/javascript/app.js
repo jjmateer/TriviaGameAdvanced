@@ -12,6 +12,12 @@ var question5 = "What fast food chain sells kentucky fried chicken?";
 
 //variable put in place that is changed to either true or false when a #choice is clicked
 var rightWrong = true || false;
+function correct() {
+    rightwrong = true;
+}
+function incorrect(){
+    rightwrong = false;
+}
 // var rightWrong2 = 0 || 1;
 // var rightWrong3 = 0 || 1;
 // var rightWrong4 = 0 || 1;
@@ -270,7 +276,7 @@ function startGame() {
     $("#choice1, #choice2, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
-        rightWrong = false;
+       incorrect();
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was Burger King!");
@@ -295,7 +301,7 @@ function startGame() {
     });
     //if statements for correct answer
     $("#choice3").click(function () {
-        rightWrong = true;
+        correct();
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("The Whopper is sold by Burger King.")
@@ -332,7 +338,7 @@ function questionTwo() {
     $("#choice3").text("Burger King");
     $("#choice4").text("Carl's Jr.");
     $("#choice2, #choice3, #choice4").click(function () {
-        rightWrong = false;
+       incorrect();
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was mcdonalds!");
@@ -351,7 +357,7 @@ function questionTwo() {
     });
 
     $("#choice1").click(function () {
-        rightWrong = true;
+        correct();
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("The Big mac is sold by mcdonalds.")
@@ -384,7 +390,7 @@ function questionThree() {
     $("#choice3").text("Mcdonald's");
     $("#choice4").text("Taco Bell");
     $("#choice1, #choice2, #choice3").click(function () {
-        rightWrong = false;
+       incorrect();
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was Taco Bell!");
@@ -404,7 +410,7 @@ function questionThree() {
 
     $("#choice4").click(function () {
         i = 5;
-        rightWrong = true;
+        correct();
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("The Triple layer nacho is sold by Taco bell.")
@@ -437,7 +443,7 @@ function questionFour() {
     $("#choice3").text("Carl's Jr.");
     $("#choice4").text("Taco Bell");
     $("#choice2, #choice3, #choice4").click(function () {
-        rightWrong = false;
+       incorrect();
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was In-N-Out!");
 
@@ -454,7 +460,7 @@ function questionFour() {
     });
 
     $("#choice1").click(function () {
-        rightWrong = true;
+        correct();
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("Animal fries are sold by In-N-Out")
@@ -488,7 +494,7 @@ function questionFive() {
     $("#choice3").text("KFC");
     $("#choice4").text("Taco Bell");
     $("#choice1, #choice2, #choice4").click(function () {
-        rightWrong = false;
+       incorrect();
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was KFC.");
@@ -506,7 +512,7 @@ function questionFive() {
     });
 
     $("#choice3").click(function () {
-        rightWrong = true;
+        correct();
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("Kentucky fried chicken is sold at KFC.")
