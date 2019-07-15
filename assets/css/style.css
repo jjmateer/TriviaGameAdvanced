@@ -80,3 +80,8 @@
     width:100%;
     height:100%;
 }
+#countDisplay1, #countDisplay2, #countDisplay3 {
+width:100%;
+text-align:center;
+font-size:45px;
+}
