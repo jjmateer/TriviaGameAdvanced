@@ -11,18 +11,15 @@ var question4 = "What fast food chain sells animal fries?";
 var question5 = "What fast food chain sells kentucky fried chicken?";
 
 //variable put in place that is changed to either true or false when a #choice is clicked
-var rightWrong = 0 || 1;
+var rightWrong = true || false;
 // var rightWrong2 = 0 || 1;
 // var rightWrong3 = 0 || 1;
 // var rightWrong4 = 0 || 1;
 // var rightWrong5 = 0 || 1;
 //Function that hides the reset button
-
 $("#resetBtn").hide();
 
 
-$("#countDisplay").hide();
-//Create reset function
 
 //Create clearScreen function
 function clearScreen() {
@@ -36,7 +33,7 @@ function clearScreen() {
     $("#countDisplay3").hide();
     emptyChoices();
 }
-
+//Hide the display counts
 function hideCount() {
     $("#countDisplay1").hide();
     $("#countDisplay2").hide();
@@ -61,7 +58,7 @@ function timeout1() {
     $('#gifDiv').html('<img src="assets/images/burgerkinggif.webp" />');
     emptyChoices();
     //When clicked, call clearScreen function in 3 seconds
-    setTimeout(questionTwo, 3000)
+
     //Stop timer from counting down.
     unanswered = unanswered + 1;
 }
@@ -75,7 +72,7 @@ function timeout2() {
     $('#gifDiv').html('<img src="assets/images/mcdonaldsgif.webp" />');
     emptyChoices();
     //When clicked, call clearScreen function in 3 seconds
-    setTimeout(questionThree, 3000)
+
     //Stop timer from counting down.
     unanswered = unanswered + 1;
 }
@@ -89,7 +86,7 @@ function timeout3() {
     $('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />');
     emptyChoices();
     //When clicked, call clearScreen function in 3 seconds
-    setTimeout(questionFour, 3000)
+
     //Stop timer from counting down.
     unanswered = unanswered + 1;
 }
@@ -103,7 +100,7 @@ function timeout4() {
     $('#gifDiv').html('<img src="assets/images/inNOutgif.webp" />');
     emptyChoices();
     //When clicked, call clearScreen function in 3 seconds
-    setTimeout(questionFive, 3000)
+
     //Stop timer from counting down.
     unanswered = unanswered + 1;
 }
@@ -117,7 +114,7 @@ function timeout5() {
     $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
     emptyChoices();
     //When clicked, call clearScreen function in 3 seconds
-    setTimeout(endGameScreen, 3000)
+
     //Stop timer from counting down.
     unanswered = unanswered + 1;
 }
@@ -149,7 +146,7 @@ function startTimer() {
             i = i - 1;
             //If timed out, stop counting, add 1 to unanswered, make i equal to 5
             if (i <= -1) {
-                clearInterval(countdownTimer);
+
                 timeout1();
                 i = 5;
             }
@@ -169,7 +166,6 @@ function startTimer2() {
             i = i - 1;
 
             if (i <= -1) {
-                clearInterval(countdownTimer2);
 
                 timeout2();
                 i = 5;
@@ -189,7 +185,7 @@ function startTimer3() {
             i = i - 1;
 
             if (i <= -1) {
-                clearInterval(countdownTimer3);
+
 
                 timeout3();
                 i = 5;
@@ -209,7 +205,7 @@ function startTimer4() {
             i = i - 1;
 
             if (i <= -1) {
-                clearInterval(countdownTimer4);
+
 
                 timeout4()
                 i = 5;
@@ -254,6 +250,7 @@ resetBtn.addEventListener("click", function () {
 //Add on click function for start button
 $(startBtn).click(startGame);
 function startGame() {
+    rightWrong = true || false;
     //Empty out the startButton div
     $("#startButton").empty()
     //Display the first question
@@ -273,7 +270,7 @@ function startGame() {
     $("#choice1, #choice2, #choice4").click(function () {
         //sets value of rightWrong to determine if the answer is right or wrong
         //If rightWrong is true alert "correct!!", if false alert "incorrect!!"
-        rightWrong = 0;
+        rightWrong = false;
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was Burger King!");
@@ -286,18 +283,19 @@ function startGame() {
         //Empty out the userChoices div without deleting the divs inside.
         emptyChoices();
         //When clicked, move to the next screen in 3 seconds
-        setTimeout(questionTwo, 3000)
+
         //Stop timer from counting down.
         clearInterval(countdownTimer);
         //+1 to incorrectAnswers
-        if (rightWrong === 0) {
-            incorrectAnswers = incorrectAnswers + 1;
+        if (rightWrong === false) {
+            incorrectAnswers++;
+            setTimeout(questionTwo, 3000)
         }
 
     });
     //if statements for correct answer
     $("#choice3").click(function () {
-        rightWrong = 1;
+        rightWrong = true;
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("The Whopper is sold by Burger King.")
@@ -306,20 +304,22 @@ function startGame() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/burgerkinggif.webp" />');
         emptyChoices();
-        setTimeout(questionTwo, 3000);
+
         clearInterval(countdownTimer);
 
 
 
-     if (rightWrong === 1) {
-        correctAnswers = correctAnswers + 1;
-    }
-});
+        if (rightWrong === true) {
+            correctAnswers++;
+            setTimeout(questionTwo, 3000)
+        }
+    });
     console.log(incorrectAnswers);
     console.log(correctAnswers);
 }
 
 function questionTwo() {
+    rightWrong = true || false;
     i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
@@ -332,7 +332,7 @@ function questionTwo() {
     $("#choice3").text("Burger King");
     $("#choice4").text("Carl's Jr.");
     $("#choice2, #choice3, #choice4").click(function () {
-        rightWrong = 0;
+        rightWrong = false;
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was mcdonalds!");
@@ -341,16 +341,17 @@ function questionTwo() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/mcdonaldsgif.webp" />');
         emptyChoices();
-        setTimeout(questionThree, 3000);
+
 
         clearInterval(countdownTimer2);
-        if (rightWrong === 1) {
-            correctAnswers = correctAnswers + 1;
+        if (rightWrong === false) {
+            correctAnswers++;
+            setTimeout(questionThree, 3000);
         }
     });
 
     $("#choice1").click(function () {
-        rightWrong = 1;
+        rightWrong = true;
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("The Big mac is sold by mcdonalds.")
@@ -359,9 +360,10 @@ function questionTwo() {
         $('#gifDiv').html('<img src="assets/images/mcdonaldsgif.webp" />');
         emptyChoices();
         clearInterval(countdownTimer2);
-        setTimeout(questionThree, 3000);
-        if (rightWrong === 0) {
-            incorrectAnswers = incorrectAnswers + 1;
+
+        if (rightWrong === true) {
+            incorrectAnswers++;
+            setTimeout(questionThree, 3000);
         }
     });
 
@@ -370,7 +372,7 @@ function questionTwo() {
     console.log(correctAnswers);
 }
 function questionThree() {
-
+    rightWrong = true || false;
     i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
@@ -382,7 +384,7 @@ function questionThree() {
     $("#choice3").text("Mcdonald's");
     $("#choice4").text("Taco Bell");
     $("#choice1, #choice2, #choice3").click(function () {
-        rightWrong = 0;
+        rightWrong = false;
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was Taco Bell!");
@@ -392,16 +394,17 @@ function questionThree() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />');
         emptyChoices();
-        setTimeout(questionFour, 3000);
+
         clearInterval(countdownTimer3);
-        if (rightWrong === 0) {
-            incorrectAnswers = incorrectAnswers + 1;
+        if (rightWrong === false) {
+            incorrectAnswers++;
+            setTimeout(questionFour, 3000);
         }
     });
 
     $("#choice4").click(function () {
         i = 5;
-        rightWrong = 1;
+        rightWrong = true;
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("The Triple layer nacho is sold by Taco bell.")
@@ -409,10 +412,11 @@ function questionThree() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />');
         emptyChoices();
-        setTimeout(questionFour, 3000);
+
         clearInterval(countdownTimer3);
-        if (rightWrong === 1) {
-            correctAnswers = correctAnswers + 1;
+        if (rightWrong === true) {
+            correctAnswers++;
+            setTimeout(questionFour, 3000)
         }
     });
 
@@ -421,7 +425,7 @@ function questionThree() {
     console.log(correctAnswers);
 }
 function questionFour() {
-
+    rightWrong = true || false;
     i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
@@ -433,7 +437,7 @@ function questionFour() {
     $("#choice3").text("Carl's Jr.");
     $("#choice4").text("Taco Bell");
     $("#choice2, #choice3, #choice4").click(function () {
-        rightWrong = 0;
+        rightWrong = false;
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was In-N-Out!");
 
@@ -441,15 +445,16 @@ function questionFour() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/inNoutgif.webp" />');
         emptyChoices();
-        setTimeout(questionFive, 3000);
+
         clearInterval(countdownTimer4);
-        if (rightWrong === 0) {
-            incorrectAnswers = incorrectAnswers + 1;
+        if (rightWrong === false) {
+            incorrectAnswers++;
+            setTimeout(questionFive, 3000)
         }
     });
 
     $("#choice1").click(function () {
-        rightWrong = 1;
+        rightWrong = true;
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("Animal fries are sold by In-N-Out")
@@ -457,10 +462,11 @@ function questionFour() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/inNoutgif.webp" />');
         emptyChoices();
-        setTimeout(questionFive, 3000);
+
         clearInterval(countdownTimer4);
-        if (rightWrong === 1) {
-            correctAnswers = correctAnswers + 1;
+        if (rightWrong === true) {
+            correctAnswers++;
+            setTimeout(questionFive, 3000)
         }
     });
 
@@ -470,7 +476,7 @@ function questionFour() {
 }
 
 function questionFive() {
-
+    rightWrong = true || false;
     i = 5;
     $("#gifDiv").empty();
     $("#startButton").empty();
@@ -482,7 +488,7 @@ function questionFive() {
     $("#choice3").text("KFC");
     $("#choice4").text("Taco Bell");
     $("#choice1, #choice2, #choice4").click(function () {
-        rightWrong = 0;
+        rightWrong = false;
 
         $("#startButton").text("Wrong!!");
         $("#triviaQuestion").text("The correct answer was KFC.");
@@ -490,15 +496,17 @@ function questionFive() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
         emptyChoices();
-        setTimeout(endGameScreen, 3000);
+
         clearInterval(countdownTimer5);
-        if (rightWrong === 0) {
-            incorrectAnswers = incorrectAnswers + 1;
+        if (rightWrong === false) {
+            incorrectAnswers++;
+            setTimeout(endGameScreen, 3000)
+
         }
     });
 
     $("#choice3").click(function () {
-        rightWrong = 1;
+        rightWrong = true;
 
         $("#startButton").text("Right!!");
         $("#triviaQuestion").text("Kentucky fried chicken is sold at KFC.")
@@ -506,15 +514,16 @@ function questionFive() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/kfcgif.webp" />');
         emptyChoices();
-        setTimeout(endGameScreen, 3000);
+
         clearInterval(countdownTimer5);
-        if (rightWrong === 1) {
-            correctAnswers = correctAnswers + 1;
+        if (rightWrong === true) {
+            correctAnswers++;
+            setTimeout(endGameScreen, 3000)
         }
 
 
     });
-  
+
 
     console.log(incorrectAnswers);
     console.log(correctAnswers);
@@ -548,3 +557,19 @@ $("#resetBtn").click(function () {
 });
 
 
+
+//Since I did not use for loops on this early on and already finished more than half, I just continued to try to get it to
+//work like this. Everything functions correctly aside from the counts for correct and
+//incorrect counts at the end of the game, and I couldn't find a way to get my timers to
+// restart once the reset button is pressed.
+
+//If I were to redo this, I would make arrays with the questions and choices, use for loops
+//to display the length of the array and have the matching choices display with each question.
+//After that, I would make individual timers for each question that stop when a choice is clicked.
+//I would then make an array of correct answers and create if else statements that will 
+//display the div, right or wrong, and the correct answer for correct or incorrect.
+//If the user did not answer in time, I would create time out functions similar to the correct 
+//or incorrect, but is activated when the time of the clock is less than or equal to -1.
+//Once the loop has finished, push the correct, incorrect, unanswered, and time remaining using .html,
+// then create a reset button that restarts the for loop which will then zero out all the 
+//scores and loop back through till the end.
