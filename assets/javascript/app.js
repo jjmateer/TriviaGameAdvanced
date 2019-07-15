@@ -290,7 +290,9 @@ function startGame() {
         //Stop timer from counting down.
         clearInterval(countdownTimer);
         //+1 to incorrectAnswers
-
+        if (rightWrong === 0) {
+            incorrectAnswers = incorrectAnswers + 1;
+        }
 
     });
     //if statements for correct answer
@@ -307,13 +309,12 @@ function startGame() {
         setTimeout(questionTwo, 3000);
         clearInterval(countdownTimer);
 
-    });
-    if (rightWrong === 0) {
-        incorrectAnswers = incorrectAnswers + 1;
-    }
+
+
      if (rightWrong === 1) {
         correctAnswers = correctAnswers + 1;
     }
+});
     console.log(incorrectAnswers);
     console.log(correctAnswers);
 }
@@ -343,7 +344,9 @@ function questionTwo() {
         setTimeout(questionThree, 3000);
 
         clearInterval(countdownTimer2);
-
+        if (rightWrong === 1) {
+            correctAnswers = correctAnswers + 1;
+        }
     });
 
     $("#choice1").click(function () {
@@ -357,14 +360,12 @@ function questionTwo() {
         emptyChoices();
         clearInterval(countdownTimer2);
         setTimeout(questionThree, 3000);
-
+        if (rightWrong === 0) {
+            incorrectAnswers = incorrectAnswers + 1;
+        }
     });
-    if (rightWrong === 0) {
-        incorrectAnswers = incorrectAnswers + 1;
-    }
-     if (rightWrong === 1) {
-        correctAnswers = correctAnswers + 1;
-    }
+
+
     console.log(incorrectAnswers);
     console.log(correctAnswers);
 }
@@ -393,7 +394,9 @@ function questionThree() {
         emptyChoices();
         setTimeout(questionFour, 3000);
         clearInterval(countdownTimer3);
-
+        if (rightWrong === 0) {
+            incorrectAnswers = incorrectAnswers + 1;
+        }
     });
 
     $("#choice4").click(function () {
@@ -408,14 +411,12 @@ function questionThree() {
         emptyChoices();
         setTimeout(questionFour, 3000);
         clearInterval(countdownTimer3);
-
+        if (rightWrong === 1) {
+            correctAnswers = correctAnswers + 1;
+        }
     });
-    if (rightWrong === 0) {
-        incorrectAnswers = incorrectAnswers + 1;
-    }
-     if (rightWrong === 1) {
-        correctAnswers = correctAnswers + 1;
-    }
+
+
     console.log(incorrectAnswers);
     console.log(correctAnswers);
 }
@@ -442,7 +443,9 @@ function questionFour() {
         emptyChoices();
         setTimeout(questionFive, 3000);
         clearInterval(countdownTimer4);
-
+        if (rightWrong === 0) {
+            incorrectAnswers = incorrectAnswers + 1;
+        }
     });
 
     $("#choice1").click(function () {
@@ -456,14 +459,12 @@ function questionFour() {
         emptyChoices();
         setTimeout(questionFive, 3000);
         clearInterval(countdownTimer4);
-
+        if (rightWrong === 1) {
+            correctAnswers = correctAnswers + 1;
+        }
     });
-    if (rightWrong === 0) {
-        incorrectAnswers = incorrectAnswers + 1;
-    }
-     if (rightWrong === 1) {
-        correctAnswers = correctAnswers + 1;
-    }
+
+
     console.log(incorrectAnswers);
     console.log(correctAnswers);
 }
@@ -491,7 +492,9 @@ function questionFive() {
         emptyChoices();
         setTimeout(endGameScreen, 3000);
         clearInterval(countdownTimer5);
-
+        if (rightWrong === 0) {
+            incorrectAnswers = incorrectAnswers + 1;
+        }
     });
 
     $("#choice3").click(function () {
@@ -505,16 +508,14 @@ function questionFive() {
         emptyChoices();
         setTimeout(endGameScreen, 3000);
         clearInterval(countdownTimer5);
-
+        if (rightWrong === 1) {
+            correctAnswers = correctAnswers + 1;
+        }
 
 
     });
-    if (rightWrong === 0) {
-        incorrectAnswers = incorrectAnswers + 1;
-    }
-     if (rightWrong === 1) {
-        correctAnswers = correctAnswers + 1;
-    }
+  
+
     console.log(incorrectAnswers);
     console.log(correctAnswers);
 }
