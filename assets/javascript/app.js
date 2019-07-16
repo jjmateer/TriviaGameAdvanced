@@ -293,9 +293,10 @@ function startGame() {
         //Stop timer from counting down.
         clearInterval(countdownTimer);
         //+1 to incorrectAnswers
+        setTimeout(questionTwo, 3000)
         if (rightWrong === false) {
             incorrectAnswers++;
-            setTimeout(questionTwo, 3000)
+            
         }
 
     });
@@ -315,9 +316,10 @@ function startGame() {
 
 
 
+        setTimeout(questionTwo, 3000)
         if (rightWrong === true) {
             correctAnswers++;
-            setTimeout(questionTwo, 3000)
+            
         }
     });
     console.log(incorrectAnswers);
@@ -350,9 +352,10 @@ function questionTwo() {
 
 
         clearInterval(countdownTimer2);
+        setTimeout(questionThree, 3000);
         if (rightWrong === false) {
             correctAnswers++;
-            setTimeout(questionThree, 3000);
+            
         }
     });
 
@@ -367,9 +370,10 @@ function questionTwo() {
         emptyChoices();
         clearInterval(countdownTimer2);
 
+        setTimeout(questionThree, 3000);
         if (rightWrong === true) {
             incorrectAnswers++;
-            setTimeout(questionThree, 3000);
+            
         }
     });
 
@@ -400,11 +404,11 @@ function questionThree() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />');
         emptyChoices();
-
+    setTimeout(questionFour, 3000)
         clearInterval(countdownTimer3);
         if (rightWrong === false) {
             incorrectAnswers++;
-            setTimeout(questionFour, 3000);
+            
         }
     });
 
@@ -418,11 +422,11 @@ function questionThree() {
         $("#gifDiv").empty();
         $('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />');
         emptyChoices();
-
+        setTimeout(questionFour, 3000)
         clearInterval(countdownTimer3);
         if (rightWrong === true) {
             correctAnswers++;
-            setTimeout(questionFour, 3000)
+            
         }
     });
 
@@ -453,9 +457,10 @@ function questionFour() {
         emptyChoices();
 
         clearInterval(countdownTimer4);
+        
         if (rightWrong === false) {
             incorrectAnswers++;
-            setTimeout(questionFive, 3000)
+            
         }
     });
 
@@ -470,9 +475,10 @@ function questionFour() {
         emptyChoices();
 
         clearInterval(countdownTimer4);
+        
         if (rightWrong === true) {
             correctAnswers++;
-            setTimeout(questionFive, 3000)
+            
         }
     });
 
@@ -504,9 +510,10 @@ function questionFive() {
         emptyChoices();
 
         clearInterval(countdownTimer5);
+        setTimeout(endGameScreen, 3000)
         if (rightWrong === false) {
             incorrectAnswers++;
-            setTimeout(endGameScreen, 3000)
+            
 
         }
     });
@@ -522,9 +529,10 @@ function questionFive() {
         emptyChoices();
 
         clearInterval(countdownTimer5);
+        setTimeout(endGameScreen, 3000)
         if (rightWrong === true) {
             correctAnswers++;
-            setTimeout(endGameScreen, 3000)
+            
         }
 
 
