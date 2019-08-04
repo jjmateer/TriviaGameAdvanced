@@ -217,7 +217,7 @@ function renderButtons() {
         zeroOne = 0;
         if (zeroOne === 0) {
             incorrectAnswers++;
-            $("#countDisplay").html("incorrect!")
+            $("#countDisplay").html("Incorrect!")
         }
 
     });

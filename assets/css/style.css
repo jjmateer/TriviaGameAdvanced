@@ -5,7 +5,7 @@
     margin-right:10%;
     border:solid black;
     height:800px;
-    background-color: orange;
+    background-color: white;
     border:none;
     
 }
@@ -89,7 +89,28 @@ margin-right: 35%;
 }
 .cbtn, .cbtn2, .cbtn3, .cbtn4, .cbtn5{
     margin:25px;
+    transition: 1.0s;
 }
+.cbtn:hover{
+    background-color: white;
+    color: orange;
+  }
+  .cbtn2:hover{
+    background-color: white;
+    color: orange;
+  }
+  .cbtn3:hover{
+    background-color: white;
+    color: orange;
+  }
+  .cbtn4:hover{
+    background-color: white;
+    color: orange;
+  }
+  .cbtn5:hover{
+    background-color: white;
+    color: orange;
+  }
 #instructionsDiv{
     font-size:30px;
     text-align:center;
