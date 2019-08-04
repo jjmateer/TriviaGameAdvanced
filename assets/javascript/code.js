@@ -1,6 +1,6 @@
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var unanswered = 0;
+var Cholesterol = 0;
 var clockRunning = false;
 var rightWrong = true || false;
 
@@ -12,21 +12,22 @@ const questionArray = [
     q4 = "What fast food chain sells animal fries?",
     q5 = "What fast food chain sells kentucky fried chicken?"
 ];
-
-q1 = false;
-q2 = false;
-q3 = false;
-q4 = false;
-q5 = false;
+$(document).ready(function () {
+    q1 = true;
+    q2 = false;
+    q3 = false;
+    q4 = false;
+    q5 = false;
+});
 console.log(questionArray);
 //Choices
 
 var choicesArray = new Array();
-choicesArray[0] = ["<btn id='r' class='cbtn'>burgerKing</btn>", "<btn class='cbtn'>carlsJr</btn>", "<btn class='cbtn'>mcdonalds</btn>", "<btn class='cbtn'>tacoBell</btn>"];
-choicesArray[1] = ["<btn id='r' class='cbtn2'>mcdonalds</btn>", "<btn class='cbtn2'>tacoBell</btn>", "<btn class='cbtn2'>burgerKing</btn>", "<btn class='cbtn2'>carlsJr</btn>"];
-choicesArray[2] = ["<btn class='cbtn3'>burgerKing</btn>", "<btn class='cbtn3'>carlsJr</btn>", "<btn class='cbtn3'>mcdonalds</btn>", "<btn id='r' class='cbtn3'>tacoBell</btn>"];
-choicesArray[3] = ["<btn id='r' class='cbtn4'>inNOut</btn>", "<btn class='cbtn4'>burgerKing</btn>", "<btn class='cbtn4'>carlsJr</btn>", "<btn class='cbtn4'>tacoBell</btn>"];
-choicesArray[4] = ["<btn class='cbtn5'>carlsJr</btn>", "<btn class='cbtn5'>mcdonalds</btn>", "<btn id='r' class='cbtn5'>kfc</btn>", "<btn class='cbtn5'>tacoBell</btn>"];
+choicesArray[0] = ["<btn id='r' class='cbtn'>Burger King</btn>", "<btn class='cbtn'>Carl's Jr.</btn>", "<btn class='cbtn'>Mcdonald's</btn>", "<btn class='cbtn'>Taco Bell</btn>"];
+choicesArray[1] = ["<btn id='r' class='cbtn2'>Mcdonald's</btn>", "<btn class='cbtn2'>Taco Bell</btn>", "<btn class='cbtn2'>Burger King</btn>", "<btn class='cbtn2'>Carl's Jr.</btn>"];
+choicesArray[2] = ["<btn class='cbtn3'>Burger King</btn>", "<btn class='cbtn3'>Carl's Jr.</btn>", "<btn class='cbtn3'>Mcdonald's</btn>", "<btn id='r' class='cbtn3'>Taco Bell</btn>"];
+choicesArray[3] = ["<btn id='r' class='cbtn4'>In n Out</btn>", "<btn class='cbtn4'>Burger King</btn>", "<btn class='cbtn4'>Carl's Jr.</btn>", "<btn class='cbtn4'>Taco Bell</btn>"];
+choicesArray[4] = ["<btn class='cbtn5'>Carl's Jr.</btn>", "<btn class='cbtn5'>Mcdonald's</btn>", "<btn id='r' class='cbtn5'>KFC</btn>", "<btn class='cbtn5'>Taco Bell</btn>"];
 
 // Correct  choices
 var rightChoices = [
@@ -64,12 +65,12 @@ resetBtn.addEventListener("click", function () {
 
 //Hide resetBtn on load
 $("#resetBtn").hide();
-$("#countDisplay").hide();
 $("#gifDiv").empty();
 //Clear all divs
 function clearScreen() {
     $("#startButton").empty();
     $("#timeRemaining").empty();
+    $("#countDisplay").empty();
     $("#gifDiv").empty();
     $("#triviaQuestion").empty();
     $("#resetButton").hide();
@@ -81,6 +82,7 @@ function startTimer() {
         i = 10;
         clockRunning = true;
         countdownTimer = setInterval(function () {
+            console.log(i);
             $("#timeRemaining").html("Time remaining: " + i);
             i = i - 1;
             if (i <= -1) {
@@ -96,11 +98,11 @@ function timeoutFunction() {
     setTimeout(clearScreen, 3000)
     setTimeout(nextQ, 3500)
     setTimeout(startTimer, 3500)
-    unanswered++;
+    Cholesterol++;
     showCorrect();
     clearInterval(countdownTimer);
     clockRunning = false;
-    
+
 }
 //Time out
 function timeout() {
@@ -122,7 +124,7 @@ function timeout() {
         $("#timeRemaining").empty();
     }
 }
-q1 = true;
+
 function startGame() {
     startTimer();
     renderQuestion();
@@ -200,24 +202,24 @@ function renderButtons() {
     $("#r").on('click', function () {
         console.log("correct: " + correctAnswers)
         zeroOne = 1;
-        if(zeroOne === 1){
+        if (zeroOne === 1) {
             correctAnswers++;
+            $("#countDisplay").html("Correct!")
         }
-        console.log("01:" + zeroOne)
+
     });
     var zeroOne = 0;
-    if(zeroOne)
-    var rightChoices = [
-        choicesArray[0][0],
-        choicesArray[1][0],
-        choicesArray[2][3],
-        choicesArray[3][0],
-        choicesArray[4][2]
-    ];
-    $(rightChoices).on('click', function() {
+    if (zeroOne)
+        var rightChoices = [
+            choicesArray[0][0],
+            choicesArray[1][0],
+            choicesArray[2][3],
+            choicesArray[3][0],
+            choicesArray[4][2]
+        ];
+    $(rightChoices).on('click', function () {
         correctAnswers++;
     });
-
     $(".cbtn").on('click', function () {
         console.log('clicked');
         clearInterval(countdownTimer);
@@ -296,18 +298,42 @@ function endGameScreen() {
     $("#startButton").empty();
     $("#triviaQuestion").empty();
     $("#countDisplay").show();
-    $("#countDisplay").text("Correct answers: " + correctAnswers + "Incorrect answers: " + incorrectAnswers +
-        "Unanswered: " + unanswered);
+    $("#countDisplay").text("Correct answers: " + correctAnswers + "    " + "Incorrect answers: " + incorrectAnswers + "    " +
+        "Cholesterol: " + Cholesterol);
+    $("#resetButton").show();
     $("#resetBtn").show();
     $("#countDisplay").show();
     $("#timeRemaining").hide();
     console.log(correctAnswers);
+    q1 = false;
+    q2 = false;
+    q3 = false;
+    q4 = false;
+    q5 = false;
+    if (Cholesterol > 3) {
+        clearScreen();
+        $("#countDisplay").text("Your cholesterol is too high!")
+    }
 }
-
+function showTimerTimer() {
+    $("#timeRemaining").show();
+}
 $("#resetBtn").click(function () {
-    clearScreen();
-    rightWrong = 0 || 1;
+    $("#resetBtn").hide();
+    setTimeout(startGame, 3000);
+    setTimeout(startTimer, 3000);
+    setTimeout(showTimerTimer, 3000);
+    clockRunning = false;
+    $("#countDisplay").empty();
     correctAnswers = 0;
     incorrectAnswers = 0;
-    unanswered = 0;
+    Cholesterol = 0;
+    q1 = true;
+    q2 = false;
+    q3 = false;
+    q4 = false;
+    q5 = false;
 });
+
+
+

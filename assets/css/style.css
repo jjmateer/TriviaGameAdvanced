@@ -80,28 +80,13 @@
     width:100%;
     height:100%;
 }
-#countDisplay1, #countDisplay2, #countDisplay3 {
-width:100%;
+#countDisplay{
+width:500px;
 text-align:center;
 font-size:45px;
+margin-left: 35%;
+margin-right: 35%;
 }
-.cbtn{
-    border:solid black;
-    margin:25px;
-}
-.cbtn2{
-    border:solid black;
-    margin:25px;
-}
-.cbtn3{
-    border:solid black;
-    margin:25px;
-}
-.cbtn4{
-    border:solid black;
-    margin:25px;
-}
-.cbtn5{
-    border:solid black;
+.cbtn, .cbtn2, .cbtn3, .cbtn4, .cbtn5{
     margin:25px;
 }
