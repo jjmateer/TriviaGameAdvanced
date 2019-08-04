@@ -1,8 +1,7 @@
 var correctAnswers = 0;
 var incorrectAnswers = 0;
-var Cholesterol = 0;
+var TimeOuts = 0;
 var clockRunning = false;
-var rightWrong = true || false;
 
 //Questions
 const questionArray = [
@@ -12,22 +11,14 @@ const questionArray = [
     q4 = "What fast food chain sells animal fries?",
     q5 = "What fast food chain sells kentucky fried chicken?"
 ];
-$(document).ready(function () {
-    q1 = true;
-    q2 = false;
-    q3 = false;
-    q4 = false;
-    q5 = false;
-});
-console.log(questionArray);
 //Choices
 
 var choicesArray = new Array();
-choicesArray[0] = ["<btn id='r' class='cbtn'>Burger King</btn>", "<btn class='cbtn'>Carl's Jr.</btn>", "<btn class='cbtn'>Mcdonald's</btn>", "<btn class='cbtn'>Taco Bell</btn>"];
-choicesArray[1] = ["<btn id='r' class='cbtn2'>Mcdonald's</btn>", "<btn class='cbtn2'>Taco Bell</btn>", "<btn class='cbtn2'>Burger King</btn>", "<btn class='cbtn2'>Carl's Jr.</btn>"];
-choicesArray[2] = ["<btn class='cbtn3'>Burger King</btn>", "<btn class='cbtn3'>Carl's Jr.</btn>", "<btn class='cbtn3'>Mcdonald's</btn>", "<btn id='r' class='cbtn3'>Taco Bell</btn>"];
-choicesArray[3] = ["<btn id='r' class='cbtn4'>In n Out</btn>", "<btn class='cbtn4'>Burger King</btn>", "<btn class='cbtn4'>Carl's Jr.</btn>", "<btn class='cbtn4'>Taco Bell</btn>"];
-choicesArray[4] = ["<btn class='cbtn5'>Carl's Jr.</btn>", "<btn class='cbtn5'>Mcdonald's</btn>", "<btn id='r' class='cbtn5'>KFC</btn>", "<btn class='cbtn5'>Taco Bell</btn>"];
+choicesArray[0] = ["<btn id='r' class='cbtn'>Burger King</btn>", "<btn name='w' class='cbtn'>Carl's Jr.</btn>", "<btn name='w' class='cbtn'>Mcdonald's</btn>", "<btn name='w' class='cbtn'>Taco Bell</btn>"];
+choicesArray[1] = ["<btn id='r' class='cbtn2'>Mcdonald's</btn>", "<btn name='w' class='cbtn2'>Taco Bell</btn>", "<btn name='w' class='cbtn2'>Burger King</btn>", "<btn name='w' class='cbtn2'>Carl's Jr.</btn>"];
+choicesArray[2] = ["<btn name='w' class='cbtn3'>Burger King</btn>", "<btn name='w' class='cbtn3'>Carl's Jr.</btn>", "<btn name='w' class='cbtn3'>Mcdonald's</btn>", "<btn id='r' class='cbtn3'>Taco Bell</btn>"];
+choicesArray[3] = ["<btn id='r' class='cbtn4'>In n Out</btn>", "<btn name='w' class='cbtn4'>Burger King</btn>", "<btn name='w' class='cbtn4'>Carl's Jr.</btn>", "<btn name='w' class='cbtn4'>Taco Bell</btn>"];
+choicesArray[4] = ["<btn name='w' class='cbtn5'>Carl's Jr.</btn>", "<btn name='w' class='cbtn5'>Mcdonald's</btn>", "<btn id='r' class='cbtn5'>KFC</btn>", "<btn name='w' class='cbtn5'>Taco Bell</btn>"];
 
 // Correct  choices
 var rightChoices = [
@@ -57,15 +48,24 @@ var qText = [
     "Correct answer: In n Out",
     "Correct answer: KFC"
 ];
-//Event listeners for buttons
+//Event listeners
 startBtn.addEventListener("click", function () {
 });
 resetBtn.addEventListener("click", function () {
 });
 
-//Hide resetBtn on load
-$("#resetBtn").hide();
-$("#gifDiv").empty();
+//Set q1 to true but every other question to false for the startGame function to work
+$(document).ready(function () {
+    $("#resetBtn").hide();
+    $("#gifDiv").empty();
+    $("#instructionsDiv").show();
+    q1 = true;
+    q2 = false;
+    q3 = false;
+    q4 = false;
+    q5 = false;
+});
+console.log(questionArray);
 //Clear all divs
 function clearScreen() {
     $("#startButton").empty();
@@ -92,19 +92,20 @@ function startTimer() {
         }, 1000);
     }
 }
+//Function for the timeout
 function timeoutFunction() {
+
     $("#startButton").text("Time out!!");
     $("#userChoices").empty();
     setTimeout(clearScreen, 3000)
     setTimeout(nextQ, 3500)
     setTimeout(startTimer, 3500)
-    Cholesterol++;
+    TimeOuts++;
     showCorrect();
     clearInterval(countdownTimer);
     clockRunning = false;
-
 }
-//Time out
+//decides what type of time out each question will get
 function timeout() {
 
     if (i <= -1 && q1 === true) {
@@ -122,6 +123,7 @@ function timeout() {
     if (q5 === true) {
         endGameScreen();
         $("#timeRemaining").empty();
+
     }
 }
 
@@ -130,6 +132,7 @@ function startGame() {
     renderQuestion();
     $("#startButton").empty();
     renderButtons();
+    $("#instructionsDiv").hide();
 
 }
 //Display question
@@ -199,6 +202,7 @@ function renderButtons() {
             $("#userChoices").append(choicesArray[4][i])
         }
     }
+    var zeroOne = 0;
     $("#r").on('click', function () {
         console.log("correct: " + correctAnswers)
         zeroOne = 1;
@@ -208,18 +212,16 @@ function renderButtons() {
         }
 
     });
-    var zeroOne = 0;
-    if (zeroOne)
-        var rightChoices = [
-            choicesArray[0][0],
-            choicesArray[1][0],
-            choicesArray[2][3],
-            choicesArray[3][0],
-            choicesArray[4][2]
-        ];
-    $(rightChoices).on('click', function () {
-        correctAnswers++;
+    $('[name="w"]').on('click', function () {
+        console.log("correct: " + incorrectAnswers)
+        zeroOne = 0;
+        if (zeroOne === 0) {
+            incorrectAnswers++;
+            $("#countDisplay").html("incorrect!")
+        }
+
     });
+    //On click functions for the choices
     $(".cbtn").on('click', function () {
         console.log('clicked');
         clearInterval(countdownTimer);
@@ -289,17 +291,14 @@ function renderButtons() {
 $(startBtn).on("click", function () {
     startGame();
 });
-
-
-
-
+//Show end game screen after question 5
 function endGameScreen() {
     $("#gifDiv").empty();
     $("#startButton").empty();
     $("#triviaQuestion").empty();
     $("#countDisplay").show();
     $("#countDisplay").text("Correct answers: " + correctAnswers + "    " + "Incorrect answers: " + incorrectAnswers + "    " +
-        "Cholesterol: " + Cholesterol);
+        "TimeOuts: " + TimeOuts);
     $("#resetButton").show();
     $("#resetBtn").show();
     $("#countDisplay").show();
@@ -310,14 +309,17 @@ function endGameScreen() {
     q3 = false;
     q4 = false;
     q5 = false;
-    if (Cholesterol > 3) {
-        clearScreen();
-        $("#countDisplay").text("Your cholesterol is too high!")
-    }
+    // if (TimeOuts > 3) {
+    //     clearScreen();
+    //     $("#countDisplay").append("Your TimeOuts is too high!")
+    // }
 }
+//function to show timer when reset button is pressed
 function showTimerTimer() {
     $("#timeRemaining").show();
 }
+
+//return to the first question in 3 seconds and start the timer
 $("#resetBtn").click(function () {
     $("#resetBtn").hide();
     setTimeout(startGame, 3000);
@@ -327,13 +329,14 @@ $("#resetBtn").click(function () {
     $("#countDisplay").empty();
     correctAnswers = 0;
     incorrectAnswers = 0;
-    Cholesterol = 0;
+    TimeOuts = 0;
     q1 = true;
     q2 = false;
     q3 = false;
     q4 = false;
     q5 = false;
 });
+
 
 
 

@@ -90,3 +90,8 @@ margin-right: 35%;
 .cbtn, .cbtn2, .cbtn3, .cbtn4, .cbtn5{
     margin:25px;
 }
+#instructionsDiv{
+    font-size:30px;
+    text-align:center;
+    line-height: 50px;
+}
