@@ -170,11 +170,11 @@ function showCorrect() {
         $("#triviaQuestion").html(qText[1])
     }
     if (q3 === true) {
-        $('#gifDiv').html('<img src="assets/images/tacoBellgif.webp" />')
+        $('#gifDiv').html('<img src="assets/images/tacobellgif.webp" />')
         $("#triviaQuestion").html(qText[2])
     }
     if (q4 === true) {
-        $('#gifDiv').html('<img src="assets/images/inNoutgif.webp" />')
+        $('#gifDiv').html('<img src="assets/images/innoutgif.webp" />')
         $("#triviaQuestion").html(qText[3])
     }
     if (q5 === true) {
