@@ -1,12 +1,14 @@
-
+body{
+    background-size: cover;
+}
 .container {
     width:80%;
     margin-left:10%;
     margin-right:10%;
     border:solid black;
     height:800px;
-    background-color: white;
-    border:none;
+    background-color: lightslategrey;
+    border-radius:15px;
     
 }
 #containerTitle{
@@ -92,23 +94,23 @@ margin-right: 35%;
     transition: 1.0s;
 }
 .cbtn:hover{
-    background-color: white;
+    background-color: lightslategray;
     color: orange;
   }
   .cbtn2:hover{
-    background-color: white;
+    background-color: lightslategray;
     color: orange;
   }
   .cbtn3:hover{
-    background-color: white;
+    background-color: lightslategray;
     color: orange;
   }
   .cbtn4:hover{
-    background-color: white;
+    background-color: lightslategray;
     color: orange;
   }
   .cbtn5:hover{
-    background-color: white;
+    background-color: lightslategray;
     color: orange;
   }
 #instructionsDiv{
