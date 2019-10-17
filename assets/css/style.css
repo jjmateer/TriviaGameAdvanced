@@ -20,16 +20,16 @@ body{
     height:75px;
     margin-left:25%;
     margin-right:25%;
-    font-size:50px;
     text-align: center;
 }
 #startBtn{
     height:65px;
     width:50%;
+    background-color:orange;
     border:solid black;
     margin-left:25%;
     margin-right:25%;
-    
+    font-size:50px;
 }
 #resetButton {
     width:50%;
